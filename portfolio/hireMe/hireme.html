@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hire me</title>
+    <link rel="stylesheet" href="hireme.css">
+</head>
+<body>
+  
+    <!-- contact section starts -->
+
+<section class="contact" id="contact">
+  <h1 class="heading">hire <span>me</span></h1>
+  <div class="col-container">
+    <div class="col">
+      <h2>get connected</h2>
+      <form name="submit-to-google-sheet">
+        <input type="text" name="name" placeholder="your name" />
+        <input type="text" name="cname" placeholder="company name" />
+        <input type="text" name="subject" placeholder="subject" />
+        <input type="text" name="phone" placeholder="your phone" />
+        <textarea name="message" placeholder="write a message" id="" cols="30" rows="10"></textarea>
+        <button type="submit" class="btn">
+          send message
+        </button> 
+      </form>
+      <span id="msg"></span>
+      
+    </div>
+
+     </div>
+</section>
+
+<!-- contact section ends -->
+
+ 
+
+<script>
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyzw5ssu-9Ug3Hc0vZoYBBVVcXSQDbqzsge07XBW1E2b6KZJ6KbkqJzjQgQwq6ls9Bsyw/exec'
+ 
+  const form = document.forms['submit-to-google-sheet']
+
+  const msg = document.getElementById("msg")
+ 
+  form.addEventListener('submit', e => {
+ 
+   e.preventDefault()
+ 
+   fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+ 
+    .then(response => {msg.innerHTML = "Message sent successfully"
+          setTimeout(function(){
+            msg.innerHTML = ""
+          },5000)
+          form.reset()
+        })
+ 
+    .catch(error => console.error('Error!', error.message))
+ 
+  })
+ 
+ </script>
+ 
+ 
+</body>
+</html>
+
+
+   <!-- contact section starts -->
+  <!--  
+<section class="contact" id="contact">
+  <h1 class="heading">hire <span>me</span></h1>
+  <div class="col-container">
+    <div class="col">
+      <h2>get connected</h2>
+      <form onsubmit="sendEmail(); reset(); return false;" >
+        <input type="text" name="name" id="name" placeholder="your name" />
+        <input type="text" name="cname" id="cname" placeholder="company name" />
+        <input type="email" name="email" id="email" placeholder="company email" />
+        <input type="text" name="subject" id="subject" placeholder="subject" />
+        <textarea name="message" id="message" placeholder="write a message" id="" cols="30" rows="10"></textarea>
+        <button type="submit" class="btn">
+          send message
+        </button> 
+      </form>
+      <span id="msg"></span>
+      
+    </div>
+
+     </div>
+</section>
+-->
+<!-- contact section ends -->
+
+<!--
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+  function sendEmail (){
+    Email.send({
+  Host : "smtp.elasticemail.com",
+  Username : "komaladik10dec@gmail.com",
+  Password : "6144CC3C8E0A57A1456B54DB3127810F3AEC",
+  To : 'komaladik111@gmail.com',
+  From : document.getElementById("email").value,
+  Subject : "contact through hire me",
+  Body : "Name: " + document.getElementById("name").value
+  + "<br>Company Name: " + document.getElementById("cname").value
+  + "<br>Company Email: " + document.getElementById("email").value
+  + "<br>subject: " + document.getElementById("subject").value
+  + "<br>message: " + document.getElementById("message").value
+}).then(
+message => alert("Message sent succesfully")
+);
+  }
+</script>
+
+-->
